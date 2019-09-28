@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
         myButton = findViewById(R.id.loginButton);
-        signUp = findViewById(R.id.createAccountButton);
+        signUp = findViewById(R.id.cab);
         etEmail = findViewById(R.id.emailField);
         etPassword = findViewById(R.id.passwordField);
         myButton.setOnClickListener(new View.OnClickListener() {
