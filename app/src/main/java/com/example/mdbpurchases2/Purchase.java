@@ -1,21 +1,28 @@
 package com.example.mdbpurchases2;
 
+import android.util.Log;
+
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Map;
 
 public class Purchase implements Serializable {
     String cost;
     String description;
     String supplier;
     String photoURL;
-    Date date;
+    Long timestamp;
 
-    public Purchase(String a, String b, String c, String d, Date e) {
+    public Purchase() {
+
+    }
+
+    public Purchase(String a, String b, String c, String d, Long e) {
         cost = a;
         description = b;
         supplier = c;
         photoURL = d;
-        date = e;
+        timestamp = e;
     }
     public String getCost() {
         return cost;
@@ -33,8 +40,8 @@ public class Purchase implements Serializable {
         return photoURL;
     }
 
-    public Date getDate() {
-        return date;
+    public Long getTimestamp() {
+        return timestamp;
     }
 
     public void setCost(String cost) {
@@ -53,7 +60,7 @@ public class Purchase implements Serializable {
         this.photoURL = photoURL;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setTimestamp(Long timestamp) {
+        this.timestamp = timestamp;
     }
 }

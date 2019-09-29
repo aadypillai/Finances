@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class PurchaseAdapter extends RecyclerView.Adapter<PurchaseAdapter.CustomViewHolder> implements Filterable {
     Context context;
@@ -39,11 +40,9 @@ public class PurchaseAdapter extends RecyclerView.Adapter<PurchaseAdapter.Custom
     public void onBindViewHolder(@NonNull PurchaseAdapter.CustomViewHolder holder, int position) {
         Purchase purchase = filteredPurchase.get(position);
         holder.cost.setText(purchase.getCost());
-        holder.date.setText(purchase.getDate().toString());
+        holder.date.setText(new Date(purchase.getTimestamp()).toString());
         holder.description.setText(purchase.getDescription());
         holder.supplier.setText(purchase.getSupplier());
-
-
     }
 
     @Override
