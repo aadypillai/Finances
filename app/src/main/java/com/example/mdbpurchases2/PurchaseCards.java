@@ -46,19 +46,6 @@ public class PurchaseCards extends AppCompatActivity {
         Purchase A3 = new Purchase("$69.00", "Cheese", "Walmart", "https://imgur.com/a/2sKXERB", System.currentTimeMillis());
         Purchase A4 = new Purchase("$69.00", "Cheese", "Walmart", "https://imgur.com/a/2sKXERB", System.currentTimeMillis());
         purchases = new ArrayList<>();
-        purchases.add(A1);
-        purchases.add(A2);
-        purchases.add(A3);
-        purchases.add(A4);
-        final RecyclerView recList = (RecyclerView) findViewById(R.id.recyclerView);
-        recList.setHasFixedSize(true);
-        LinearLayoutManager llm = new LinearLayoutManager(this);
-        llm.setOrientation(LinearLayoutManager.VERTICAL);
-        recList.setLayoutManager(llm);
-        adapter = new PurchaseAdapter(getApplicationContext(), purchases);
-        recList.setAdapter(adapter);
-
-
         // used to read the data -- for some reason the purchases list is getting the data but its
         // being displayed in the recyclerview
         DatabaseReference ref = mDatabase.child("purchases");
@@ -68,6 +55,17 @@ public class PurchaseCards extends AppCompatActivity {
                 for (DataSnapshot ds: dataSnapshot.getChildren()) {
                     Purchase purchase = ds.getValue(Purchase.class);
                     purchases.add(purchase);
+
+                    // have to do the recyclerview stuff here because its an async task
+                    // that needs to be completed before the adapter can be created
+
+                    final RecyclerView recList = (RecyclerView) findViewById(R.id.recyclerView);
+                    recList.setHasFixedSize(true);
+                    LinearLayoutManager llm = new LinearLayoutManager(PurchaseCards.this);
+                    llm.setOrientation(LinearLayoutManager.VERTICAL);
+                    recList.setLayoutManager(llm);
+                    adapter = new PurchaseAdapter(getApplicationContext(), purchases);
+                    recList.setAdapter(adapter);
                     adapter.notifyDataSetChanged();
                     Log.d("XYZ", ((Integer) purchases.size()).toString());
                 }
@@ -79,7 +77,11 @@ public class PurchaseCards extends AppCompatActivity {
 
             }
         });
-
-        Log.d("henlo" , "got past");
+        Log.d("XYZ", "before?");
+        purchases.add(A1);
+        purchases.add(A2);
+        purchases.add(A3);
+        purchases.add(A4);
+        Log.d("XYZ" , "got past");
     }
 }
