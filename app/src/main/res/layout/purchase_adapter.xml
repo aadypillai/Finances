@@ -31,63 +31,69 @@
 
         <TextView
             android:id="@+id/cost"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="48dp"
+            android:layout_width="102dp"
+            android:layout_height="97dp"
+            android:layout_marginStart="294dp"
+            android:layout_marginBottom="39dp"
+            android:gravity="center"
             android:text="TextView"
             android:textAlignment="center"
-            android:textColor="#000"
+            android:textColor="#FF0000"
             android:textSize="24sp"
             android:textStyle="normal|bold"
-            app:layout_constraintStart_toEndOf="@+id/supplier"
-            app:layout_constraintTop_toTopOf="@+id/date" />
+            app:layout_constraintBottom_toTopOf="@+id/date"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/image"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/supplier"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="12dp"
+            android:layout_marginEnd="196dp"
+            android:layout_marginBottom="11dp"
             android:text="TextView"
             android:textAlignment="center"
             android:textColor="#000"
             android:textSize="24sp"
             android:textStyle="normal|bold"
-            app:layout_constraintStart_toEndOf="@+id/image"
-            app:layout_constraintTop_toBottomOf="@+id/date" />
-
-        <TextView
-            android:id="@+id/date"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="30dp"
-            android:text="TextView"
-            android:textAlignment="center"
-            android:textColor="#000"
-            android:textSize="24sp"
-            android:textStyle="normal|bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/image"
+            app:layout_constraintBottom_toTopOf="@+id/image"
+            app:layout_constraintEnd_toStartOf="@+id/cost"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/description"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="12dp"
-            android:layout_marginBottom="30dp"
+            android:id="@+id/date"
+            android:layout_width="366dp"
+            android:layout_height="34dp"
             android:text="TextView"
-            android:textAlignment="center"
+            android:textAlignment="viewStart"
             android:textColor="#000"
             android:textSize="24sp"
             android:textStyle="normal|bold"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/description"
+            android:layout_width="176dp"
+            android:layout_height="52dp"
+            android:layout_marginTop="48dp"
+            android:layout_marginEnd="34dp"
+            android:gravity="center"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textColor="#FFC107"
+            android:textSize="36sp"
+            android:textStyle="normal|bold"
+            app:layout_constraintBottom_toTopOf="@+id/date"
+            app:layout_constraintEnd_toStartOf="@+id/cost"
+            app:layout_constraintHorizontal_bias="0.833"
             app:layout_constraintStart_toEndOf="@+id/image"
-            app:layout_constraintTop_toBottomOf="@+id/supplier"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.315" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
