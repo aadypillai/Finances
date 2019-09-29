@@ -34,8 +34,12 @@ public class PurchaseCards extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_purchase_cards);
         Purchase newPurchase = new Purchase("70.00", "Cheese", "Walmart", "https://imgur.com/a/2sKXERB", System.currentTimeMillis());
+
+        // used to write to the database, when doing setValue, the the child method call
+        // should be passing a unique ID each time we want to create a new purchase object
+        // currently, this code is writes over the purchase that is shown for purchase2
         DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
-//        mDatabase.child("purchases").child("purchase2").setValue(newPurchase);
+        mDatabase.child("purchases").child("purchase2").setValue(newPurchase);
 //        getWindow().getDecorView().setBackgroundColor(Color.RED);
         Purchase A1 = new Purchase("$69.00", "Cheese", "Walmart", "https://imgur.com/a/2sKXERB", System.currentTimeMillis());
         Purchase A2 = new Purchase("$69.00", "Cheese", "Walmart", "https://imgur.com/a/2sKXERB", System.currentTimeMillis());
@@ -54,6 +58,9 @@ public class PurchaseCards extends AppCompatActivity {
         adapter = new PurchaseAdapter(getApplicationContext(), purchases);
         recList.setAdapter(adapter);
 
+
+        // used to read the data -- for some reason the purchases list is getting the data but its
+        // being displayed in the recyclerview
         DatabaseReference ref = mDatabase.child("purchases");
         ref.addValueEventListener(new ValueEventListener() {
             @Override
