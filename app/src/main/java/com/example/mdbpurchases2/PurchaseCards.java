@@ -55,26 +55,24 @@ public class PurchaseCards extends AppCompatActivity {
                 for (DataSnapshot ds: dataSnapshot.getChildren()) {
                     Purchase purchase = ds.getValue(Purchase.class);
                     purchases.add(purchase);
-
-                    // have to do the recyclerview stuff here because its an async task
-                    // that needs to be completed before the adapter can be created
-
-                    final RecyclerView recList = (RecyclerView) findViewById(R.id.recyclerView);
-                    recList.setHasFixedSize(true);
-                    LinearLayoutManager llm = new LinearLayoutManager(PurchaseCards.this);
-                    llm.setOrientation(LinearLayoutManager.VERTICAL);
-                    recList.setLayoutManager(llm);
-                    adapter = new PurchaseAdapter(getApplicationContext(), purchases);
-                    recList.setAdapter(adapter);
-                    adapter.notifyDataSetChanged();
-                    Log.d("XYZ", ((Integer) purchases.size()).toString());
                 }
+                // have to do the recyclerview stuff here because its an async task
+                // that needs to be completed before the adapter can be created
+
+                final RecyclerView recList = (RecyclerView) findViewById(R.id.recyclerView);
+                recList.setHasFixedSize(true);
+                LinearLayoutManager llm = new LinearLayoutManager(PurchaseCards.this);
+                llm.setOrientation(LinearLayoutManager.VERTICAL);
+                recList.setLayoutManager(llm);
+                adapter = new PurchaseAdapter(getApplicationContext(), purchases);
+                recList.setAdapter(adapter);
+                adapter.notifyDataSetChanged();
+                Log.d("XYZ", ((Integer) purchases.size()).toString());
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
                 Log.d("XYZ", "error");
-
             }
         });
         Log.d("XYZ", "before?");
