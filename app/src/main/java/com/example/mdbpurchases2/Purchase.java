@@ -4,13 +4,20 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class Purchase implements Serializable {
-    int cost;
+    String cost;
     String description;
     String supplier;
     String photoURL;
     Date date;
 
-    public int getCost() {
+    public Purchase(String a, String b, String c, String d, Date e) {
+        cost = a;
+        description = b;
+        supplier = c;
+        photoURL = d;
+        date = e;
+    }
+    public String getCost() {
         return cost;
     }
 
@@ -30,7 +37,7 @@ public class Purchase implements Serializable {
         return date;
     }
 
-    public void setCost(int cost) {
+    public void setCost(String cost) {
         this.cost = cost;
     }
 

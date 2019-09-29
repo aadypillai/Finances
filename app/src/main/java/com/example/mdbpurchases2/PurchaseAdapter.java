@@ -1,10 +1,12 @@
 package com.example.mdbpurchases2;
 
 import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -27,16 +29,26 @@ public class PurchaseAdapter extends RecyclerView.Adapter<PurchaseAdapter.Custom
     @NonNull
     @Override
     public PurchaseAdapter.CustomViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return null;
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.purchase_adapter, parent, false);
+        return new CustomViewHolder(view);
+
+
     }
 
     @Override
     public void onBindViewHolder(@NonNull PurchaseAdapter.CustomViewHolder holder, int position) {
+        Purchase purchase = filteredPurchase.get(position);
+        holder.cost.setText(purchase.getCost());
+        holder.date.setText(purchase.getDate().toString());
+        holder.description.setText(purchase.getDescription());
+        holder.supplier.setText(purchase.getSupplier());
+
+
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return filteredPurchase.size();
     }
 
     public void addPurchase(Purchase purchase) {
@@ -85,10 +97,18 @@ public class PurchaseAdapter extends RecyclerView.Adapter<PurchaseAdapter.Custom
 
 
     public class CustomViewHolder extends RecyclerView.ViewHolder {
+        TextView cost;
+        TextView date;
+        TextView description;
+        TextView supplier;
 
 
         public CustomViewHolder(View itemView) {
             super(itemView);
+            this.cost = itemView.findViewById(R.id.cost);
+            this.date = itemView.findViewById(R.id.date);
+            this.description = itemView.findViewById(R.id.description);
+            this.supplier = itemView.findViewById(R.id.supplier);
 
         }
 
