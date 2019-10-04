@@ -6,10 +6,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -43,6 +46,7 @@ public class PurchaseAdapter extends RecyclerView.Adapter<PurchaseAdapter.Custom
         holder.date.setText(new Date(purchase.getTimestamp()).toString());
         holder.description.setText(purchase.getDescription());
         holder.supplier.setText(purchase.getSupplier());
+        Glide.with(context).load(purchase.getPhotoURL()).into(holder.imageView);
     }
 
     @Override
@@ -100,6 +104,7 @@ public class PurchaseAdapter extends RecyclerView.Adapter<PurchaseAdapter.Custom
         TextView date;
         TextView description;
         TextView supplier;
+        ImageView imageView;
 
 
         public CustomViewHolder(View itemView) {
@@ -108,6 +113,7 @@ public class PurchaseAdapter extends RecyclerView.Adapter<PurchaseAdapter.Custom
             this.date = itemView.findViewById(R.id.date);
             this.description = itemView.findViewById(R.id.description);
             this.supplier = itemView.findViewById(R.id.supplier);
+            this.imageView = itemView.findViewById(R.id.image);
 
         }
 
