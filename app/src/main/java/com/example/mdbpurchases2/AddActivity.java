@@ -53,13 +53,12 @@ public class AddActivity extends AppCompatActivity {
         btnDone = findViewById(R.id.btnDone);
         btnPhoto = findViewById(R.id.btnPhoto);
         photo = findViewById(R.id.ivPhoto);
-        photoByte = "https://imgur.com/a/2sKXERB";
 
         btnDone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (photoByte == null || etCost.getText() == null || etSupplier.getText() == null || etDesc.getText() == null ) {
-                    Toast.makeText(AddActivity.this, "Please attach a photo!", Toast.LENGTH_LONG).show();
+                if (photoByte == null || etCost.getText().toString() == "" || etSupplier.getText().toString() == "" || etDesc.getText().toString() == "" ) {
+                    Toast.makeText(AddActivity.this, "Please attach a photo and fill out all the boxes!", Toast.LENGTH_LONG).show();
                 } else {
                     p = new Purchase(etCost.getText().toString(), etDesc.getText().toString(), etSupplier.getText().toString(), photoByte, System.currentTimeMillis());
                     DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
