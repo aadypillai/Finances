@@ -58,16 +58,20 @@ public class AddActivity extends AppCompatActivity {
         btnDone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                p = new Purchase(etCost.getText().toString(), etDesc.getText().toString(), etSupplier.getText().toString(), photoByte, System.currentTimeMillis());
-                DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
-                mDatabase.child("purchases").child(((Integer) p.hashCode()).toString()).setValue(p).addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        Toast.makeText(AddActivity.this, "success!", Toast.LENGTH_LONG).show();
-                    }
-                });
-                Intent intent = new Intent(AddActivity.this, PurchaseCards.class);
-                startActivity(intent);
+                if (photoByte == null || etCost.getText() == null || etSupplier.getText() == null || etDesc.getText() == null ) {
+                    Toast.makeText(AddActivity.this, "Please attach a photo!", Toast.LENGTH_LONG).show();
+                } else {
+                    p = new Purchase(etCost.getText().toString(), etDesc.getText().toString(), etSupplier.getText().toString(), photoByte, System.currentTimeMillis());
+                    DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
+                    mDatabase.child("purchases").child(((Integer) p.hashCode()).toString()).setValue(p).addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+                            Toast.makeText(AddActivity.this, "success!", Toast.LENGTH_LONG).show();
+                        }
+                    });
+                    Intent intent = new Intent(AddActivity.this, PurchaseCards.class);
+                    startActivity(intent);
+                }
             }
         });
 
