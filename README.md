@@ -1,2 +1,2 @@
 # Finances
-An app where you can set certain locations to be "quiet!" Simply use our search widget to search for a place, tap it, and it's now on your Quiet List. To remove it, simply tap it again. Once you enter this area now, your phone will go into Quiet Mode. Check out the Maps fragment as well, and happy studying!
+An app where you can keep track of your organization's transactions and purchases! You can add, delete, or modify your transactions, or just use this app to keep track of them.
